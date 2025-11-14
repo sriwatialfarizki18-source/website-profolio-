@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Pribadi Saya</title>
+    <!-- Memuat Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Memuat Bootstrap Icons (opsional tapi bagus untuk portofolio) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Menggunakan warna yang lebih profesional */
+        :root {
+            --primary-color: #4a4e69; /* Deep Slate Blue */
+            --secondary-color: #9a8c98;
+            --accent-color: #c9ada7; /* Soft Accent */
+            --light-bg: #f5f3f4;
+            --dark-bg: #22223b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Font yang lebih modern */
+            background-color: var(--light-bg);
+            padding-top: 56px;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--dark-bg) !important;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .navbar-brand {
+            font-weight: 700;
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        .nav-link.active {
+            color: var(--accent-color) !important;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* Gaya untuk Bagian (Section) */
+        .page-section {
+            padding: 100px 0; /* Padding lebih besar */
+            min-height: calc(100vh - 56px);
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Gaya Khusus untuk Home */
+        #home-section {
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-photo {
+            width: 200px; /* Ukuran foto lebih besar */
+            height: 200px;
+            object-fit: cover;
+            border: 6px solid var(--primary-color);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); /* Shadow lebih kuat */
+        }
+        
+        .text-custom-primary {
+            color: var(--primary-color) !important;
+        }
+
+        /* Gaya Kartu Proyek */
+        .project-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px); /* Efek angkat yang lebih dramatis */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card img {
+            transition: opacity 0.3s;
+        }
+        .project-card:hover img {
+            opacity: 0.9;
+        }
+        
+        /* Gaya Tombol Utama */
+        .btn-custom-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .btn-custom-primary:hover {
+            background-color: #5c6280; /* Warna gelap saat hover */
+            border-color: #5c6280;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Gaya Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--accent-color);
+            padding: 30px 0;
+            border-top: 2px solid var(--primary-color);
+        }
+    </style>
+    <!-- Memuat Font Inter (Aesthetic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVIGASI BAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#" data-page="home">MyPortofolio.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" data-page="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="project">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-page="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HOME SECTION -->
+    <section id="home-section" class="page-section active">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 order-lg-last"> <!-- Pindah foto ke kanan untuk tampilan desktop lebih baik -->
+                    <!-- Placeholder Foto -->
+                    <img src="its me.jpg" class="img-fluid rounded-circle mx-auto d-block profile-photo shadow-lg" alt="Foto Profil">
+                </div>
+                <div class="col-lg-7 text-center text-lg-start order-lg-first">
+                    <p class="text-secondary fw-semibold mb-1">SELAMAT DATANG</p>
+                    <h1 class="display-3 fw-bolder text-dark">Halo, Saya <span class="text-custom-primary">Sriwati</span></h1>
+                    <p class="lead mb-4 fw-light">Seorang Mahasiswa Manajemen Informatika dengan fokus pada Desain web </p>
+                    <a href="#" class="btn btn-custom-primary btn-lg mt-3 shadow-sm" data-page="about">Jelajahi Portofolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about-section" class="page-section">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark fw-bold border-bottom pb-2">Profil & Keahlian <i class="bi bi-gear-fill text-custom-primary"></i></h2>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="card p-4 h-100 rounded-3 shadow-sm border-0">
+                        <h3 class="h4 text-custom-primary mb-3"><i class="bi bi-person-badge me-2"></i>Tentang Saya</h3>
+                        <p class="text-secondary">
+                            Saya Sriwati, bersemangat dalam menggabungkan kreativitas desain dengan fungsionalitas teknologi. Saya memiliki latar belakang di bidang desain web  dan berdedikasi untuk memberikan solusi digital yang efisien dan estetis.
+                        </p>
+                        <ul class="list-unstyled text-dark mt-3">
+                            <li><i class="bi bi-house-fill text-custom-primary me-2"></i>Domisili: Kuningan</li>
+                            <li><i class="bi bi-envelope-at-fill text-custom-primary me-2"></i>Email: sriwatialfarizki@gmail.com</li>
+                            <li><i class="bi bi-clock-fill text-custom-primary me-2"></i>Status: Siap untuk Kolaborasi</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card p-4 h-100 rounded-3 shadow-sm border-0">
+                        <h3 class="h4 text-custom-primary mb-3"><i class="bi bi-tools me-2"></i>Keahlian Teknis</h3>
+                        
+                        <!-- Mengganti warna progress bar untuk profesionalitas (Bootstrap utility classes) -->
+                        <div class="mb-3">
+                            <h6 class="text-dark d-flex justify-content-between">HTML & CSS (Bootstrap) <span class="fw-bold">90%</span></h6>
+                            <div class="progress rounded-pill" role="progressbar" aria-label="Bootstrap progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="height: 12px;">
+                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="text-dark d-flex justify-content-between">JavaScript <span class="fw-bold">75%</span></h6>
+                            <div class="progress rounded-pill" role="progressbar" aria-label="JS progress" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 12px;">
+                                <div class="progress-bar bg-info" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="text-dark d-flex justify-content-between">Desain (UI/UX & Figma) <span class="fw-bold">60%</span></h6>
+                            <div class="progress rounded-pill" role="progressbar" aria-label="Design progress" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 12px;">
+                                <div class="progress-bar bg-warning" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <h3 class="h4 text-custom-primary mt-4 mb-3"><i class="bi bi-rocket-takeoff me-2"></i>Teknologi Kunci</h3>
+                        <span class="badge rounded-pill bg-custom-primary me-2 mb-2 shadow-sm" style="background-color: var(--primary-color);">Git/GitHub</span>
+                        <span class="badge rounded-pill bg-custom-primary me-2 mb-2 shadow-sm" style="background-color: var(--primary-color);">Figma</span>
+                        <span class="badge rounded-pill bg-custom-primary me-2 mb-2 shadow-sm" style="background-color: var(--primary-color);">SEO Basics</span>
+                        <span class="badge rounded-pill bg-custom-primary me-2 mb-2 shadow-sm" style="background-color: var(--primary-color);">Mobile First Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PROJECT SECTION -->
+    <section id="project-section" class="page-section" style="background-color: #e9ecef;">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark fw-bold border-bottom pb-2">Hasil Karya Pilihan <i class="bi bi-briefcase-fill text-custom-primary"></i></h2>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                
+                <!-- Project 1 -->
+                <div class="col">
+                    <div class="card project-card h-100 shadow-lg">
+                        <img src="https://gits.id/wp-content/uploads/2021/02/Contoh-Aplikasi-E-commerce-dan-Website.jpg" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title text-custom-primary fw-bold">Website E-Commerce Sederhana</h5>
+                            <p class="card-text text-muted small">Implementasi Bootstrap, fokus pada tata letak produk yang intuitif dan alur checkout yang mudah.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-grid">
+                            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill">Lihat Pratinjau</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col">
+                    <div class="card project-card h-100 shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbwNIt2BlTS7JsmyVp22bNHmbyle5JAWL2nQ&s" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title text-custom-primary fw-bold">Aplikasi Kalkulator Interaktif</h5>
+                            <p class="card-text text-muted small">Menggunakan JavaScript murni untuk logika perhitungan kompleks dan desain yang responsif.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-grid">
+                            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill">Lihat Pratinjau</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col">
+                    <div class="card project-card h-100 shadow-lg">
+                        <img src="https://ourdonuts.com/wp-content/uploads/2024/08/Banner-Jasa-Landing-Page.png" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title text-custom-primary fw-bold">Landing Page Kampanye Digital</h5>
+                            <p class="card-text text-muted small">Proyek landing page yang dioptimalkan untuk konversi, menonjolkan visual yang kuat dan CTA yang jelas.</p>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-grid">
+                            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill">Lihat Pratinjau</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CONTACT SECTION -->
+    <section id="contact-section" class="page-section">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark fw-bold border-bottom pb-2">Mari Berkolaborasi <i class="bi bi-chat-left-text-fill text-custom-primary"></i></h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <p class="text-center text-secondary mb-4">
+                        Saya terbuka untuk proyek baru dan peluang kerja. Kirimkan detail Anda di bawah ini, dan saya akan segera merespons.
+                    </p>
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <form id="contact-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label fw-semibold">Nama Lengkap</label>
+                                    <input type="text" class="form-control rounded-pill" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-semibold">Alamat Email</label>
+                                    <input type="email" class="form-control rounded-pill" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label fw-semibold">Subjek Pesan</label>
+                                    <input type="text" class="form-control rounded-pill" id="subject" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="form-label fw-semibold">Pesan Anda</label>
+                                    <textarea class="form-control rounded-3" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-custom-primary btn-lg w-100 mt-2 shadow-sm">Kirim Pesan Profesional</button>
+                            </form>
+                            <!-- Pesan Sukses/Error (Hidden by default) -->
+                            <div id="form-message" class="mt-4 alert alert-success d-none text-center rounded-3 fw-semibold" role="alert">
+                                Pesan Anda telah terkirim! Terima kasih telah menghubungi saya.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-0 small">Didesain dan dikembangkan dengan <i class="bi bi-heart-fill text-danger"></i> oleh Sriwati &copy; 2025. Menggunakan Bootstrap 5.</p>
+        </div>
+    </footer>
+
+    <!-- Memuat Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- LOGIKA JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            /**
+             * Fungsi untuk menampilkan section yang aktif
+             * @param {string} pageId - ID dari section yang ingin ditampilkan (misal: 'home', 'about')
+             */
+            function showPage(pageId) {
+                // 1. Sembunyikan semua section
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // 2. Tampilkan section yang diminta
+                const activeSection = document.getElementById(pageId + '-section');
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                }
+
+                // 3. Atur status 'active' pada Nav Link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                        // Tutup navbar collapse di perangkat mobile setelah klik
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                             new bootstrap.Collapse(navbarCollapse, { toggle: false }).hide();
+                        }
+                    }
+                });
+            }
+
+            // Listener untuk klik pada Nav Link
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = e.currentTarget.getAttribute('data-page');
+                    showPage(page);
+                    // Gulir ke atas halaman
+                    window.scrollTo(0, 0); 
+                });
+            });
+
+            // Listener untuk Form Kontak
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Di dunia nyata, di sini Anda akan mengirim data ke server
+                    console.log('Form Submitted!');
+                    console.log('Nama:', document.getElementById('name').value);
+                    console.log('Email:', document.getElementById('email').value);
+                    console.log('Subjek:', document.getElementById('subject').value);
+                    console.log('Pesan:', document.getElementById('message').value);
+
+                    // Tampilkan pesan sukses
+                    formMessage.classList.remove('d-none', 'alert-danger');
+                    formMessage.classList.add('alert-success');
+                    formMessage.textContent = 'Pesan Anda telah terkirim! Terima kasih atas waktu dan minat Anda.';
+                    
+                    // Kosongkan formulir
+                    contactForm.reset();
+
+                    // Sembunyikan pesan setelah 5 detik
+                    setTimeout(() => {
+                        formMessage.classList.add('d-none');
+                    }, 5000);
+                });
+            }
+
+            // Logika inisiasi: pastikan halaman awal (Home) dimuat saat pertama kali
+            // showPage('home'); // Tidak perlu, karena sudah diatur .active di HTML awal
+        });
+    </script>
+</body>
+</html>
