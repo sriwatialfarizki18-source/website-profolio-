@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuningan - Kota Kuda</title>
+    <!-- Memuat Tailwind CSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Mengatur font default Inter dan scroll halus */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f7fafc; /* Abu-abu muda */
+        }
+        /* Style untuk efek hover pada navigasi */
+        .nav-link:hover {
+            color: #10b981; /* Hijau Emerald */
+        }
+        /* Style untuk header agar fixed */
+        #header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+        }
+        /* Style untuk latar belakang hero section dengan gradien overlay */
+        #hero {
+            background-image: url('https://superlive.id/storage/articles/cea28f3e-e4ef-497c-8b5a-09ccd693630f.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        /* Overlay gelap untuk membuat teks lebih menonjol */
+        #hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        /* Kelas untuk kartu konten */
+        .content-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header / Navigasi (Fixed Top) -->
+    <header id="header" class="sticky top-0 z-50 bg-white/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-[#10b981] flex items-center">
+                    <!-- Icon Kuda -->
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0zM7 21h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Kuningan Kota Kuda
+                </a>
+
+                <!-- Navigasi Utama -->
+                <nav class="hidden md:flex space-x-8 font-semibold">
+                    <a href="#sejarah" class="text-gray-600 nav-link transition-colors">Sejarah</a>
+                    <a href="#wisata" class="text-gray-600 nav-link transition-colors">Wisata</a>
+                    <a href="#kuliner" class="text-gray-600 nav-link transition-colors">Kuliner</a>
+                    <a href="#kontak" class="text-gray-600 nav-link transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Tombol Mobile Menu (Untuk tampilan kecil) -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors">
+                    <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Tersembunyi secara default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-t border-gray-200">
+            <nav class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#sejarah" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-gray-100">Sejarah</a>
+                <a href="#wisata" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-gray-100">Wisata</a>
+                <a href="#kuliner" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-gray-100">Kuliner</a>
+                <a href="#kontak" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-gray-100">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Tampilan Utama) -->
+        <section id="hero" class="relative text-white flex items-center justify-center h-[60vh] sm:h-[75vh] md:h-[85vh]">
+            <div class="relative z-10 text-center p-6 rounded-xl bg-black/30 backdrop-blur-sm">
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 animate-fadeIn">
+                    Selamat Datang di Kuningan
+                </h1>
+                <p class="text-xl sm:text-2xl font-light mb-8">
+                    Sejuknya Kaki Gunung Ciremai, Kekayaan Sejarah dan Alam Jawa Barat
+                </p>
+                <a href="#wisata" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#10b981] hover:bg-emerald-600 transition duration-300 transform hover:scale-105 shadow-lg">
+                    Jelajahi Sekarang
+                </a>
+            </div>
+        </section>
+
+        <!-- Section Sejarah -->
+        <section id="sejarah" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-[#059669] sm:text-4xl">
+                        Sejarah Singkat Kuningan
+                    </h2>
+                    <p class="mt-4 text-xl text-gray-500">
+                        Menelusuri jejak masa lalu yang kaya akan budaya dan perjuangan.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                            Kuningan dikenal sebagai Kota Kuda, yang diambil dari kisah legenda Arya Adipati Ewangga dan kuda pusakanya, Si Windu. Namun, Kuningan juga memegang peranan penting dalam sejarah nasional.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                            Daerah ini menjadi saksi bisu dari peristiwa bersejarah Perundingan Linggarjati pada tahun 1946, yang merupakan upaya diplomasi antara Indonesia dan Belanda. Gedung Perundingan Linggarjati kini menjadi museum yang ramai dikunjungi, menunjukkan betapa berharganya Kuningan dalam perjuangan kemerdekaan.
+                        </p>
+                        <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                            Dengan latar belakang Gunung Ciremai, Kuningan juga memiliki tradisi budaya Sunda yang kental, menjadikannya perpaduan sempurna antara alam, sejarah, dan kebudayaan.
+                        </p>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <img class="w-full h-auto object-cover rounded-xl shadow-2xl transition duration-500 transform hover:scale-[1.02]" 
+                             src="https://museum.co.id/wp-content/uploads/2020/09/serunya-berwisata-di-gedung-linggarjati-yang-penuh-sejarah-K8rstZBNXh.jpg" 
+                             alt=""
+                             onerror="this.onerror=null; this.src='https://museum.co.id/wp-content/uploads/2020/09/serunya-berwisata-di-gedung-linggarjati-yang-penuh-sejarah-K8rstZBNXh.jpg'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Wisata -->
+        <section id="wisata" class="py-16 sm:py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-[#059669] sm:text-4xl">
+                        Destinasi Wisata Pilihan
+                    </h2>
+                    <p class="mt-4 text-xl text-gray-500">
+                        Nikmati keindahan alam dan kesejukan udara Kuningan.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Kartu 1: Gunung Ciremai -->
+                    <div class="content-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" 
+                             src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Gunung_Ciremai_sfw2503.jpg" 
+                             alt="">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Gunung Ciremai</h3>
+                            <p class="text-gray-600 text-sm">Gunung tertinggi di Jawa Barat. Tempat favorit bagi para pendaki yang mencari tantangan dan pemandangan luar biasa dari puncaknya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 2: Waduk Darma -->
+                    <div class="content-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" 
+                             src="https://allblog.id/wp-content/uploads/2025/11/Untitled-25-780x450.png" 
+                             alt="">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Waduk Darma</h3>
+                            <p class="text-gray-600 text-sm">Obyek wisata air yang menawarkan pemandangan perbukitan yang indah. Cocok untuk bersantai, memancing, atau naik perahu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 3: Curug Putri Palutungan -->
+                    <div class="content-card bg-white rounded-xl shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" 
+                             src="https://faceharta.com/wp-content/uploads/2024/08/a-2024-08-04T104828.744.png.webp" 
+                             alt="">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Curug Putri Palutungan</h3>
+                            <p class="text-gray-600 text-sm">Air terjun yang sejuk dan asri di kaki Ciremai. Menyuguhkan suasana hutan yang tenang dan air yang jernih.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Section Kuliner -->
+        <section id="kuliner" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-extrabold text-[#059669] sm:text-4xl">
+                        Ragam Kuliner Khas Kuningan
+                    </h2>
+                    <p class="mt-4 text-xl text-gray-500">
+                        Jelajahi cita rasa Kuningan yang unik dan menggugah selera.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <!-- Kuliner 1: Nasi Kasreng -->
+                    <div class="content-card bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                        <!-- Gambar Kuliner 1 (Lingkaran) -->
+                        <img class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#10b981] shadow-lg" 
+                             src="https://arahpantura.id/wp-content/uploads/2022/11/IMG_20221120_115235.jpg" 
+                             alt="">
+                        <h4 class="text-lg font-semibold text-gray-900">Nasi Kasreng</h4>
+                        <p class="text-sm text-gray-600 mt-2">Nasi dengan lauk sederhana seperti teri, sayuran, dan sambal, disajikan hangat.</p>
+                    </div>
+
+                    <!-- Kuliner 2: Peuyeum Ketan -->
+                    <div class="content-card bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                        <!-- Gambar Kuliner 2 (Lingkaran) -->
+                        <img class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#10b981] shadow-lg" 
+                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaBrPeMLk-2av4RGe_I9GrkTyf--1UNsLnEg&s" 
+                             alt="">
+                        <h4 class="text-lg font-semibold text-gray-900">Peuyeum Ketan</h4>
+                        <p class="text-sm text-gray-600 mt-2">Tape ketan hitam yang dibungkus daun jambu. Rasa manis, asam, dan segar.</p>
+                    </div>
+
+                    <!-- Kuliner 3: Hucap -->
+                    <div class="content-card bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                        <!-- Gambar Kuliner 3 (Lingkaran) -->
+                        <img class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#10b981] shadow-lg" 
+                             src="https://cdn.rri.co.id/berita/Voice_of_Indonesia/o/1726050511649-Hucap_Dapur_Teh_Enur/s5s28zuclj7uy0m.png" 
+                             alt="">
+                        <h4 class="text-lg font-semibold text-gray-900">Hucap (Kupat Tahu)</h4>
+                        <p class="text-sm text-gray-600 mt-2">Ketupat dan tahu dengan bumbu kacang khas Kuningan yang encer dan manis.</p>
+                    </div>
+
+                    <!-- Kuliner 4: Kopi Luwak Ciremai -->
+                    <div class="content-card bg-gray-50 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
+                        <!-- Gambar Kuliner 4 (Lingkaran) -->
+                        <img class="w-24 h-24 rounded-full object-cover mb-4 border-4 border-[#10b981] shadow-lg" 
+                             src="https://ciremaicoffee.com/wp-content/uploads/2023/08/01-rb-luwak-1024x1024.jpg" 
+                             alt="">
+                        <h4 class="text-lg font-semibold text-gray-900">Kopi Luwak Ciremai</h4>
+                        <p class="text-sm text-gray-600 mt-2">Kopi dari perkebunan di lereng Ciremai yang memiliki aroma dan rasa khas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Kontak / Footer -->
+        <footer id="kontak" class="bg-gray-800 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">Kuningan Selalu di Hati</h3>
+                    <p class="text-gray-400 mb-6">
+                        Mari kita jaga dan kembangkan potensi kota kelahiran kita.
+                    </p>
+                    <div class="flex justify-center space-x-6 text-xl">
+                        <!-- Placeholder Link Media Sosial -->
+                        <a href="#" class="hover:text-[#10b981] transition-colors" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.1 12.8h-8.2V9.2h8.2v5.6zm-4.1-1.6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                        </a>
+                        <a href="#" class="hover:text-[#10b981] transition-colors" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.04 12L14.4 9.4H12v-1.6c0-.98.4-1.6 1.7-1.6H15V3.1c-.2-.03-1.1-.1-2.1-.1-2.4 0-4.1 1.5-4.1 4.2v2.1H7v2.6h3.8V22h4.4v-10h2.8l.4-2.6H14.4z"/></svg>
+                        </a>
+                        <a href="#" class="hover:text-[#10b981] transition-colors" aria-label="Twitter">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 4.01c-.72.32-1.5.53-2.32.63.83-.5 1.45-1.28 1.75-2.22-.78.46-1.64.8-2.57.98-.74-.78-1.79-1.27-2.95-1.27-2.22 0-4.02 1.8-4.02 4.02 0 .32.04.63.12.92-3.34-.17-6.32-1.77-8.31-4.2s-2.2-5.75-.48-8.23c.3.5.7.94 1.15 1.34-1.2-.35-2.3-.77-3.25-1.12.08.38.16.76.16 1.16 0 1.25-.63 2.34-1.6 3-.18.06-.35.12-.53.16.32.96.88 1.77 1.63 2.42-1.2.03-2.3-.3-3.25-.86.04.9.36 1.75.92 2.43.08.1.18.2.27.28.3.26.65.48 1.02.66-.4.07-.8.1-1.22.1-.28 0-.56-.03-.83-.07.4.82.98 1.53 1.7 2.15 1.2 1.05 2.65 1.7 4.2 1.7-.85.67-1.85 1.05-2.92 1.05-.2 0-.38-.02-.56-.05 1.48.96 3.24 1.53 5.08 1.53 6.1 0 10.5-5.06 9.4-11.4 0-.05 0-.1 0-.15.42-.3.77-.66 1.06-1.07z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+                    &copy; 2025 Kuningan Kota Kuda. Dibuat dengan ❤ untuk Kota Kuningan Kelahiranku.
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Logika JavaScript untuk toggle menu mobile
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Logika untuk menyembunyikan menu mobile saat link diklik
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
